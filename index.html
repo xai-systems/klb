@@ -7,7 +7,7 @@
 <title>KLB Transport — Pārvākšanās un transporta pakalpojumi Rīgā</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -656,22 +656,85 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
   padding-top:24px;display:flex;justify-content:space-between;
   font-size:12px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px;
 }
+@keyframes xda-shimmer{
+  0%{background-position:-200% center}
+  100%{background-position:200% center}
+}
+@keyframes xda-dot-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}
+  60%{box-shadow:0 0 0 6px rgba(34,197,94,0)}
+}
+@keyframes xda-spin{
+  to{transform:rotate(360deg)}
+}
 .xda-credit{
-  margin-top:18px;
-  padding-top:14px;
+  margin-top:18px;padding-top:18px;
   border-top:1px solid rgba(255,255,255,.07);
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  font-size:13px;color:rgba(255,255,255,.72);
+  display:flex;align-items:center;justify-content:center;
 }
-.xda-credit a{
-  display:inline-flex;align-items:center;gap:10px;
-  color:#fff;text-decoration:none;font-weight:700;
+.xda-link{
+  position:relative;
+  display:inline-flex;align-items:center;gap:11px;
+  color:#fff;text-decoration:none;
+  padding:9px 18px 9px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  transition:background .28s,border-color .28s,transform .28s,box-shadow .28s;
+  overflow:hidden;
+  isolation:isolate;
 }
-.xda-credit img{
+.xda-link::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);
+  background-size:250% 100%;
+  background-position:200% center;
+  transition:background-position .6s ease,opacity .3s;
+  opacity:0;
+  pointer-events:none;
+}
+.xda-link:hover{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.2);
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(0,0,0,.4),0 1px 0 rgba(255,255,255,.06) inset;
+}
+.xda-link:hover::after{
+  opacity:1;
+  background-position:-100% center;
+}
+.xda-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#22c55e;flex-shrink:0;
+  animation:xda-dot-pulse 1.8s ease-out infinite;
+}
+.xda-credit-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:rgba(255,255,255,.45);
+  font-weight:400;letter-spacing:.03em;
+  white-space:nowrap;
+}
+.xda-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#000;border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;padding:4px 9px;
+  transition:border-color .28s;
+}
+.xda-link:hover .xda-badge{border-color:rgba(255,255,255,.35)}
+.xda-badge img{
   height:24px;width:auto;display:block;
-  filter:invert(1) contrast(1.05) brightness(1.1);
 }
-.xda-credit a:hover{color:#ffdbdc}
+.xda-ai-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  background:linear-gradient(90deg,#ff7070 0%,#ff3a3a 40%,#ff9a9a 60%,#ff3a3a 100%);
+  background-size:250% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:xda-shimmer 3.5s linear infinite;
+  white-space:nowrap;
+}
 
 /* ── SCROLL TOP ── */
 #top{
@@ -841,7 +904,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
   .t-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .foot-bottom{flex-direction:column}
-  .xda-credit{flex-direction:column;gap:8px}
+  .xda-link{gap:8px;padding:8px 14px 8px 11px}
   .hero-side{grid-template-columns:1fr}
   .proof-list{grid-template-columns:1fr}
   .flow-grid{grid-template-columns:1fr}
@@ -1472,10 +1535,13 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
       <span>www.klbtransport.lv</span>
     </div>
     <div class="xda-credit">
-      <span>Izstrādājis</span>
-      <a href="https://xda.lv" target="_blank" rel="noopener">
-        <img src="img/xda-logo-black.png" alt="xda.lv logo">
-        <span>xda.lv</span>
+      <a href="https://xda.lv" target="_blank" rel="noopener" class="xda-link">
+        <span class="xda-dot"></span>
+        <span class="xda-credit-label">mājaslapa izveidota ar</span>
+        <span class="xda-badge">
+          <img src="img/xda-logo-black.png" alt="xda.lv">
+        </span>
+        <span class="xda-ai-tag">AI ENGINE</span>
       </a>
     </div>
   </div>
