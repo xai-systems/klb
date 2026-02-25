@@ -656,6 +656,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
   padding-top:24px;display:flex;justify-content:space-between;
   font-size:12px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px;
 }
+.xda-credit{
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:13px;color:rgba(255,255,255,.72);
+}
+.xda-credit a{
+  display:inline-flex;align-items:center;gap:10px;
+  color:#fff;text-decoration:none;font-weight:700;
+}
+.xda-credit img{
+  height:24px;width:auto;display:block;
+  filter:invert(1) contrast(1.05) brightness(1.1);
+}
+.xda-credit a:hover{color:#ffdbdc}
 
 /* ── SCROLL TOP ── */
 #top{
@@ -825,6 +841,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
   .t-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .foot-bottom{flex-direction:column}
+  .xda-credit{flex-direction:column;gap:8px}
   .hero-side{grid-template-columns:1fr}
   .proof-list{grid-template-columns:1fr}
   .flow-grid{grid-template-columns:1fr}
@@ -1453,6 +1470,13 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:52px 0 28px}
     <div class="foot-bottom">
       <span>© 2025 SIA KLBTransport · Reģ. nr. LV40103710874</span>
       <span>www.klbtransport.lv</span>
+    </div>
+    <div class="xda-credit">
+      <span>Izstrādājis</span>
+      <a href="https://xda.lv" target="_blank" rel="noopener">
+        <img src="img/xda-logo-black.png" alt="xda.lv logo">
+        <span>xda.lv</span>
+      </a>
     </div>
   </div>
 </footer>
